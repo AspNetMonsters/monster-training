@@ -45,32 +45,49 @@
     margin-left:25px;
 }
 
-.parallax-background {
-	background-image: url("../images/monsters.png");
-	height: 620px;
-	background-repeat: no-repeat;
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-	background-size: cover;
-	position: fixed;
-	width: 100%;
+@media screen and (max-width: 39.9375em) {
+    .parallax-background {
+        display:none;
+    }
+
+    .parallax-content {
+	    max-width: 100%;
+	    position: relative;
+	    top: 0px;
+	    background-color: #fff;
+    }
 }
 
-.intro-text {
-	font-size: 50px;
-	color: #fff;
-	text-align: center;
-    position:relative;
-	margin-top: 400px;
+@media screen and (min-width: 40em) {
+    .parallax-background {
+	    background-image: url("../images/monsters.png");
+	    height: 620px;
+	    background-repeat: no-repeat;
+	    -webkit-background-size: cover;
+  	    -moz-background-size: cover;
+  	    -o-background-size: cover;
+	    background-size: cover;
+        background-position: 50% 25%;
+	    position: fixed;
+	    width: 100%;
+    }
+    
+    .intro-text {
+	    font-size: 50px;
+	    color: #fff;
+	    text-align: center;
+        position:relative;
+	    margin-top: 400px;
+    }
+
+    .parallax-content {
+	    max-width: 100%;
+	    position: relative;
+	    top: 500px;
+	    background-color: #fff;
+    }
 }
 
-.parallax-content {
-	max-width: 100%;
-	position: relative;
-	top: 500px;
-	background-color: #fff;
-}
 
 .first-para {
     margin-top: 25px;
