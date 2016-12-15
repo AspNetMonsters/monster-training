@@ -32,4 +32,49 @@
         background: rgba(250, 250, 250, 0.15); }
       .header-subnav li a:hover {
         background: rgba(250, 250, 250, 0.15);
-        transition: all 0.35s ease-in-out; }s
+        transition: all 0.35s ease-in-out; }
+
+.accordion-title
+{
+    font-size:18px;
+}
+
+.monster-image{
+    float:right;
+    max-width:300px;
+    margin-left:25px;
+}
+
+.parallax-background {
+	background-image: url("../images/monsters.png");
+	height: 620px;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+}
+
+.intro-text {
+	font-size: 50px;
+	color: #fff;
+	text-align: center;
+    position:relative;
+	margin-top: 400px;
+}
+
+.parallax-content {
+	max-width: 100%;
+	position: relative;
+	top: 500px;
+	background-color: #fff;
+}
+
+.first-para {
+    margin-top: 25px;
+    margin-bottom:150px;
+}
+
+
