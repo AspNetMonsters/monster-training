@@ -18,6 +18,7 @@ namespace MonsterTraining
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddUserSecrets()
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -29,6 +30,8 @@ namespace MonsterTraining
         {
             // Add framework services.
             services.AddMvc();
+            services.AddOptions();
+            services.Configure<StripeOptions>(Configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
