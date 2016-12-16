@@ -1,12 +1,12 @@
-﻿
+﻿@model MonsterTraining.Models.StripeModel
 <div class="title-bar hide-for-medium">
     <div class="title-bar-left">
         <ul class="menu">
             <li class="menu-text">ASP.NET Core Training with the ASP.NET Monsters</li>
-</ul>            <ul class="menu">
-                <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
-                <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
-            </ul>
+        </ul>            <ul class="menu">
+            <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
+            <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
+        </ul>
     </div>
 </div>
 
@@ -76,15 +76,28 @@
         <p>
             <strong>Check out the workshop outline below.</strong>
         </p>
-        <div class="callout warning">
-            <h5>Online Registration Opening Soon</h5>
-        </div>
+
         <div class="callout">
             <ul class="menu simple">
                 <li>Feb 22-24 2017</li>
                 <li>110 9TH Avenue SW - Suite 800, Calgary, AB</li>
                 <li>CAD $1999/dev</li>
                 <li>Group rates available</li>
+                <li>
+                    <form action="/Registration/Complete" method="POST">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="@Model.Key"
+                                data-amount="199900"
+                                data-name="ASP.NET Monsters"
+                                data-description="Calgary ASP.NET Core Training"
+                                data-image="/images/small_logo.png"
+                                data-locale="auto"
+                                data-currency="cad"
+                                data-zip-code="true"
+                                data-label="Sign up for the Calgary class">
+                        </script>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

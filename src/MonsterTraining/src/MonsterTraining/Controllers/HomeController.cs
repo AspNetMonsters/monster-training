@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MonsterTraining.Models;
+using System;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace MonsterTraining.Controllers
 {
     public class HomeController : Controller
     {
+        IOptions<StripeOptions> _stripeOptions;
+        public HomeController(IOptions<StripeOptions> stripeOptions)
+        {
+            _stripeOptions = stripeOptions;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(new StripeModel { Key = _stripeOptions.Value.Key });
         }
 
         public IActionResult Error()
