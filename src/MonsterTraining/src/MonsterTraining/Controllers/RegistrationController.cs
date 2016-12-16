@@ -15,6 +15,7 @@ namespace MonsterTraining.Controllers
         {
             _stripeOptions = stripeOptions;
         }
+
         public IActionResult Complete(string stripeToken)
         {
             var buffer = new byte[Request.ContentLength.Value];
@@ -29,16 +30,20 @@ namespace MonsterTraining.Controllers
 
             // set this if you want to
             myCharge.Description = "ASP.NET Monsters Training";
-
-            myCharge.Source = new StripeSourceOptions { TokenId = stripeToken };
-            
+            myCharge.Source = new StripeSourceOptions { TokenId = stripeToken };            
             
             // (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
             myCharge.Capture = true;
 
             var chargeService = new StripeChargeService();
             StripeCharge stripeCharge = chargeService.Create(myCharge);
+
             return View();
+        }
+
+        public IActionResult Preview()
+        {
+            return View("Complete");
         }
     }
 }
