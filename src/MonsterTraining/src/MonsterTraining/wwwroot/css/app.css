@@ -39,11 +39,6 @@
     font-size:18px;
 }
 
-.monster-image{
-    float:right;
-    max-width:300px;
-    margin-left:25px;
-}
 
 @media screen and (max-width: 39.9375em) {
     .parallax-background {
@@ -56,6 +51,12 @@
 	    top: 0px;
 	    background-color: #fff;
     }
+
+    .monster-image{
+    float:right;
+    max-width:100px;
+    margin-left:15px;
+}
 }
 
 @media screen and (min-width: 40em) {
@@ -86,6 +87,12 @@
 	    top: 500px;
 	    background-color: #fff;
     }
+
+    .monster-image{
+    float:right;
+    max-width:300px;
+    margin-left:25px;
+}
 }
 
 

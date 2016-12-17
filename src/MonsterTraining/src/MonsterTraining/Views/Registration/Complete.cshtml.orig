@@ -1,6 +1,13 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+<<<<<<< HEAD
+@{
+}
+<h1>
+    We can't wait to see you!
+</h1>
+=======
 
 <div class="row medium-9 large-9 columns">
     <div class="callout success">
@@ -31,3 +38,4 @@
 
 </div>
 
+>>>>>>> 7180dc432d0143fd0a84e107bf740d5f00d207cc

@@ -5,17 +5,44 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training with the ASP.NET Monsters</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 
+    <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
+            <ul class="menu">
+                <li class="menu-text">ASP.NET Core Training with the ASP.NET Monsters</li>
+            </ul>            <ul class="menu">
+                <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
+                <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-sticky-container class="show-for-medium">
+        <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%">
+            <div class="title-bar-left">
+                <ul class="menu">
+                    <li class="menu-text">ASP.NET Core Training with the ASP.NET Monsters</li>
+                </ul>
+            </div>
+            <div class="title-bar-right">
+                <ul class="menu">
+                    <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
+                    <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     @RenderBody()
 
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/vendor/what-input.js"></script>
+    <script src="/js/vendor/foundation.js"></script>
+    <script src="/js/app.js"></script>
     <script src="//load.sumome.com/" data-sumo-site-id="8cbe3789e86371bb4927d9210cabfa96780ea201ed4dabaa711f0003c57709dc" async="async"></script>
 </body>
 </html>
