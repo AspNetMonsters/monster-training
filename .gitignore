@@ -303,3 +303,5 @@ $RECYCLE.BIN/
 *.lnk
 src/MonsterTraining/src/MonsterTraining/Properties/PublishProfiles/
 src/MonsterTraining/src/MonsterTraining/wwwroot/js/site.min.js
+
+*.orig
