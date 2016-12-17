@@ -1,30 +1,5 @@
-﻿
-<div class="title-bar hide-for-medium">
-    <div class="title-bar-left">
-        <ul class="menu">
-            <li class="menu-text">ASP.NET Core Training with the ASP.NET Monsters</li>
-</ul>            <ul class="menu">
-                <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
-                <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
-            </ul>
-    </div>
-</div>
+﻿@model MonsterTraining.Models.StripeModel
 
-<div data-sticky-container class="show-for-medium">
-    <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%">
-        <div class="title-bar-left">
-            <ul class="menu">
-                <li class="menu-text">ASP.NET Core Training with the ASP.NET Monsters</li>
-            </ul>
-        </div>
-        <div class="title-bar-right">
-            <ul class="menu">
-                <li><a target="new" href="https://aspnetmonsters.com">The Monster Blog</a></li>
-                <li><a target="new" href="https://aspnetmonsters.com/2016/12/aspnetcorebook/">Our ASP.NET Core MVC Book</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 
 <div class="parallax-background">
     <div class="intro-text">
@@ -76,15 +51,29 @@
         <p>
             <strong>Check out the workshop outline below.</strong>
         </p>
-        <div class="callout warning">
-            <h5>Online Registration Opening Soon</h5>
-        </div>
+
         <div class="callout">
             <ul class="menu simple">
                 <li>Feb 22-24 2017</li>
                 <li>110 9TH Avenue SW - Suite 800, Calgary, AB</li>
                 <li>CAD $1999/dev</li>
                 <li>Group rates available</li>
+                <li>
+                    <form action="/Registration/Complete" method="POST">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="@Model.Key"
+                                data-amount="199900"
+                                data-name="ASP.NET Monsters"
+                                data-description="Calgary ASP.NET Core Training"
+                                data-image="/images/small_logo.png"
+                                data-locale="auto"
+                                data-billing-address="true"
+                                data-currency="cad"
+                                data-zip-code="true"
+                                data-label="Sign up for the Calgary class">
+                        </script>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
@@ -103,12 +92,33 @@
     </header>
 
     <div class="row medium-9 large-9 columns">
-        <h2 class=" show-for-medium">We'll cover the bases. And the end zone.</h2>
+        <h2 class="show-for-medium">We'll cover the bases. And the end zone.</h2>
         <p>
             We're going to be digging in on several fronts for three solid days of
             skills refreshment and development in many areas of building web applications.
             (Click to expand module details)
         </p>
+        <div class="callout">
+            <ul class="menu simple">
+                <li>Want to attend?</li>
+                <li>
+                    <form action="/Registration/Complete" method="POST">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="@Model.Key"
+                                data-amount="199900"
+                                data-name="ASP.NET Monsters"
+                                data-description="Calgary ASP.NET Core Training"
+                                data-image="/images/small_logo.png"
+                                data-locale="auto"
+                                data-billing-address="true"
+                                data-currency="cad"
+                                data-zip-code="true"
+                                data-label="Sign up for the Calgary class">
+                        </script>
+                    </form>
+                </li>
+            </ul>
+        </div>
 
         <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
             <li class="accordion-item" data-accordion-item>
@@ -234,8 +244,26 @@
             </li>
 
         </ul>
-        <div class="callout warning">
-            <h5>Online Registration Opening Soon</h5>
+        <div class="callout">
+            <ul class="menu simple">
+                <li>Want to attend?</li>
+                <li>
+                    <form action="/Registration/Complete" method="POST">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="@Model.Key"
+                                data-amount="199900"
+                                data-name="ASP.NET Monsters"
+                                data-description="Calgary ASP.NET Core Training"
+                                data-image="/images/small_logo.png"
+                                data-locale="auto"
+                                data-billing-address="true"
+                                data-currency="cad"
+                                data-zip-code="true"
+                                data-label="Sign up for the Calgary class">
+                        </script>
+                    </form>
+                </li>
+            </ul>
         </div>
     </div>
 
