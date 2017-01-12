@@ -82,10 +82,10 @@
         <h1 class="headline">Let's mash on this.</h1>
         <ul class="header-subnav show-for-medium">
             <li><a href="#intro">Intro</a></li>
-            <li><a href="#mvcplus">MVC++</a></li>
-            <li><a href="#ef">EF</a></li>
+            <li><a href="#mvcplus">MVC</a></li>
+            <li><a href="#ef">Data Access</a></li>
             <li><a href="#messaging">Messaging</a></li>
-            <li><a href="#identity">Identity</a></li>
+            <li><a href="#identity">Auth</a></li>
             <li><a href="#cloud">Cloud</a></li>
             <li><a href="#mashmashmash">More Mashing</a></li>
         </ul>
@@ -156,7 +156,7 @@
                 </div>
             </li>
             <li class="accordion-item" data-accordion-item id="ef">
-                <a href="#" class="accordion-title">Entity Framework</a>
+                <a href="#" class="accordion-title">Data Access</a>
                 <div class="accordion-content" data-tab-content>
                     <p>
                         Everyone's got to save some data, sometime. Entity Framework has proven
@@ -170,6 +170,7 @@
                         <tr><td>Testing with in-memory contexts</td></tr>
                         <tr><td>Modelling with multiple contexts</td></tr>
                         <tr><td>Optimizing Queries</td></tr>
+                        <tr><td>Exploring Micro ORMs with Dapper.NET</td></tr>
                     </table>
                 </div>
             </li>
@@ -189,19 +190,19 @@
                 </div>
             </li>
             <li class="accordion-item" data-accordion-item id="identity">
-                <a href="#" class="accordion-title">Identity</a>
+                <a href="#" class="accordion-title">Authentication and Authorization</a>
                 <div class="accordion-content" data-tab-content>
                     <p>
                         Line-of-Business app? Consumer-facing app? Either way, you're likely going to
                         need to know who's using your website before doing anything too terribly
-                        interesting. We'll talk about how to wire up identity, the backing stores and
-                        how to identify your users using various identity providers.
+                        interesting. We'll talk about how to wire up authentication, learn to work with claims 
+                        and create reusable authorization policies.
                     </p>
                     <table>
-                        <tr><td>Individual Accounts</td></tr>
-                        <tr><td>AD integration</td></tr>
-                        <tr><td>Azure AD</td></tr>
-                        <tr><td>Azure Active Directory B2C</td></tr>
+                        <tr><td>Authentication Middleware</td></tr>
+                        <tr><td>Working with Claims</td></tr>
+                        <tr><td>Creating Authorization Policies</td></tr>
+                        <tr><td>Authentication Providers (Identity, AD Integration, Azure Active Directory B2C)</td></tr>
                     </table>
                 </div>
             </li>
