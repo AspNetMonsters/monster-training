@@ -85,7 +85,7 @@ namespace MonsterTraining.Controllers
             var total = (int)(1500 * groupSize);
             var gst = (int)(total * 0.05);
 
-            myCharge.Amount = total+gst;
+            myCharge.Amount = (total + gst) * 100;
             myCharge.Currency = "cad";
             myCharge.Metadata = new Dictionary<string, string>()
             {
