@@ -1,0 +1,77 @@
+﻿@model PreviewGroupRegistrationModel
+
+<div class="row">
+
+    <h3>Did We Get That Right?</h3>
+    <p>
+        Please review the information below, and if you 
+        are all set, click the magic button at the bottom 
+        of the form and get set to join us at the workshop.
+        It'll be #swellacool.
+    </p>
+    
+    <hr />
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Summary of Awesome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Contact Name</td>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Model.EmailAddress</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>@Model.Telephone</td>
+            </tr>
+            <tr>
+                <td>Group Size</td>
+                <td>@Model.GroupSize</td>
+            </tr>
+            <tr>
+                <td>Total (Including GST)</td>
+                <td>$@(Model.Total + Model.Gst)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr />
+
+    <div class="callout">
+        <ul class="menu simple">
+            <li>Engage ASP.NET Core Warp Drive...</li>
+            <li>
+                <form action="/GroupRegistration/Complete" method="POST">
+                    <input type="hidden" name="GroupSize" value="@Model.GroupSize" />
+                    <input type="hidden" name="StripeAmount" value="@Model.StripeAmount" />
+                    <input type="hidden" name="EmailAddress" value="@Model.EmailAddress" />
+                    <input type="hidden" name="Telephone" value="@Model.Telephone" />
+                    <input type="hidden" name="FullName" value="@Model.FullName" />
+                    <input type="hidden" name="ForgeryToken" value="@Model.ForgeryToken" />
+
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="@Model.Key"
+                            data-amount="@Model.StripeAmount"
+                            data-name="ASP.NET Monsters"
+                            data-description="Calgary ASP.NET Core Training"
+                            data-image="/images/small_logo.png"
+                            data-locale="auto"
+                            data-billing-address="true"
+                            data-currency="cad"
+                            data-zip-code="true"
+                            data-label="Sign up for the Calgary class">
+                    </script>
+
+                </form>
+            </li>
+        </ul>
+    </div>
+
+</div>
