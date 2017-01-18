@@ -1,0 +1,114 @@
+﻿@{
+}
+
+<div class="row ">
+    <h2>Group Registration</h2>
+
+    <p>
+        Thanks for your interest in group rates for our workshop. If you've landed here off
+        a link and would like more information about our content and itinerary, please be
+        sure to check out our <a asp-controller="Home" asp-action="Index">landing page</a>
+        for the complete course outline.
+    </p>
+
+    <hr />
+
+    <h3>Who's Leading Your Crew?</h3>
+    <p>
+        We need a few details to complete the registration. Please let us know who will be
+        the contact person for your group. 
+    </p>
+    <p>
+        For group discounts, a minimum of 5 attendees is required.
+    </p>    
+
+    <form asp-controller="GroupRegistration" asp-action="Review" method="post">
+        <div id="registration-form">
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>
+                        Group Contact Name
+                        <input type="text" name="FullName" id="FullName" placeholder="Firsty McLastername">
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>
+                        Email Address
+                        <input type="email" name="EmailAddress" id="EmailAddress" placeholder="foo@@ohsobar.com">
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>
+                        Phone Number
+                        <input type="tel" name="Telephone" id="Telephone" placeholder="403-555-1234">
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>
+                        Number of Folks in Your Group
+                    </label>
+                    <div class="medium-9 columns">
+                        <div class="slider" data-slider data-initial-start="5" data-start="@ViewBag.MinGroupSize" data-end="15" data-changed-delay="150">
+                            <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="groupSize"></span>
+                            <span class="slider-fill" data-slider-fill></span>
+                        </div>
+                    </div>
+                    <div class="medium-3 columns">
+                        <input type="number" name="GroupSize" id="groupSize">
+                        <input type="hidden" name="Total" id="Total" />
+                        <input type="hidden" name="Gst" id="Gst"/>
+                        <input type="hidden" name="ForgeryToken" value="@Guid.NewGuid()" />
+                        <input type="hidden" name="ForgeryDiscount" value="@Guid.NewGuid()" />
+                        <input type="hidden" name="ForgeryRate" value="25" />
+                    </div>
+                </div>
+            </div>
+            
+            <hr />
+
+            <p>
+                Your total will be <span style="font-weight:bold" id="total-amount">$</span> CAD, 
+                including <span style="font-weight:bold" id="total-gst">$</span> GST.
+            </p>
+
+            <hr />
+
+            <button type="submit" class="button success">Let's Do This.</button>
+
+        </div>
+    </form>
+
+
+</div>
+
+@section Scripts{
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('.slider').on('changed.zf.slider', function(){
+
+            var class_size = $(this).children('.slider-handle').attr('aria-valuenow');
+            var total = parseInt(class_size) * 1500;
+            var gst = 0.05 * (total);
+            
+            $("#total-gst").html("$" + gst);
+            $("#total-amount").html("$" + (gst + total));
+
+            $('#Total').val(total);
+            $('#Gst').val(gst);
+
+        });
+    });
+
+</script>
+    
+}
