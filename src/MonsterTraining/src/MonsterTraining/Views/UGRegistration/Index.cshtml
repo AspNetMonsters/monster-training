@@ -1,0 +1,70 @@
+﻿@model UserGroupModel
+
+<div class="row ">
+    <h2>User Group Registration</h2>
+
+    <p>
+        We extend a monstrous welcome to the members of the @Model.GroupName! If you've 
+        landed here off a link and would like more information about our content and 
+        itinerary, please be sure to check out our 
+        <a asp-controller="Home" asp-action="Index" target="_blank">landing page</a>
+        for the complete course outline (link opens in a new window).
+    </p>
+
+    <p>
+        Through @Model.GroupName you receive a <b>15% discount</b> for your registration
+        at a rate of $1700 CAD plus GST (a grand total of $1785 CAD). 
+    </p>
+
+    <hr />
+    <form action="/UGRegistration/Complete" method="POST">
+        <h3>Attendee Information</h3>
+        <div class="row">
+            <div class="medium-6 columns">
+                <label>
+                    Full Name
+                    <input type="text" name="FullName" id="FullName" placeholder="Firsty McLastername">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-6 columns">
+                <label>
+                    Email Address
+                    <input type="email" name="EmailAddress" id="EmailAddress" placeholder="foo@@ohsobar.com">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-6 columns">
+                <label>
+                    Phone Number
+                    <input type="tel" name="Telephone" id="Telephone" placeholder="403-555-1234">
+                </label>
+            </div>
+        </div>
+        <p>You will enter the billing information in the popup...click the button below to register!</p>
+        <div class="callout">
+            <ul class="menu simple">
+                <li>Engage ASP.NET Core Warp Drive...</li>
+                <li>
+                    <input type="hidden" name="GroupName" value="@Model.GroupName" />
+
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="@Model.StripeKey"
+                            data-amount="178500"
+                            data-name="ASP.NET Monsters"
+                            data-description="Calgary ASP.NET Core Training"
+                            data-image="/images/small_logo.png"
+                            data-locale="auto"
+                            data-billing-address="true"
+                            data-currency="cad"
+                            data-zip-code="true"
+                            data-label="Sign up for the Calgary class">
+                    </script>
+                </li>
+            </ul>
+        </div>
+    </form>
+
+</div>

@@ -17,7 +17,7 @@
     "MonsterTraining": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000",
+      "launchUrl": "http://localhost:5000/ugregistration?groupCode=17e46bee",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

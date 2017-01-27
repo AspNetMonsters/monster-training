@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MonsterTraining.Models;
 
 namespace MonsterTraining
 {
@@ -33,6 +34,21 @@ namespace MonsterTraining
             services.AddMvc();
             services.AddOptions();
             services.Configure<StripeOptions>(Configuration.GetSection("Stripe"));
+
+            services.Configure<UserGroupOptions>(Configuration.GetSection("UserGroups"));
+
+            var groups = new UserGroupOptions();
+
+            for (int i = 0; i < 20; i++)
+            {
+                var name = Configuration.GetValue<string>($"UserGroups:{i}:GroupName");
+                var code = Configuration.GetValue<string>($"UserGroups:{i}:GroupCode");
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(code))
+                    groups.UserGroups.Add(new UserGroup { GroupName = name, GroupCode = code });
+            }
+
+            services.AddSingleton<UserGroupOptions>(groups);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
