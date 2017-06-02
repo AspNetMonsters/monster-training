@@ -1,9 +1,9 @@
 ﻿import * as React from "react"
 import * as ReactDOM from "react-dom"
 
-import { Hello } from "./components/Hello";
+import { SessionList } from "./components/SessionList";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <SessionList />,
     document.getElementById("root")
 );

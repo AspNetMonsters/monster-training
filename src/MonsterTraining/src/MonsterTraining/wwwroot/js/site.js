@@ -1,6 +1,6 @@
 "use strict";
 var React = require("react");
 var ReactDOM = require("react-dom");
-var Hello_1 = require("./components/Hello");
-ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("root"));
+var SessionList_1 = require("./components/SessionList");
+ReactDOM.render(React.createElement(SessionList_1.SessionList, null), document.getElementById("root"));
 //# sourceMappingURL=site.js.map
