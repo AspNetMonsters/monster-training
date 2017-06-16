@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -91,7 +91,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var SessionDisplay_1 = __webpack_require__(5);
-var SelectedSessionList_1 = __webpack_require__(7);
+var SelectedSessionList_1 = __webpack_require__(4);
 var Sessions = [
     { Name: "Entity Framework", Description: "If you've got data in a database and you need to get it out then Entity Framework Core is you best friend. In this session we'll cover the basics: building a data context, structuring entities and doing queries", Length: 2, Selected: false },
     { Name: "Introduction to .NET Core", Description: ".NET Core is a streamlined version of .NET which supports cross platform development and .NET Standard", Length: 1, Selected: false }
@@ -114,6 +114,9 @@ var SessionList = (function (_super) {
             React.createElement(SelectedSessionList_1.SelectedSessionList, { Sessions: this.state.SelectedSessions }),
             rows);
     };
+    SessionList.prototype.componentDidUpdate = function () {
+        new Tippy("span");
+    };
     SessionList.prototype.selectItem = function (name) {
         var sessions = this.state.Sessions;
         var item = sessions.filter(function (x) { return x.Name === name.target.attributes["data-key"].value; })[0];
@@ -133,7 +136,29 @@ exports.SessionList = SessionList;
 module.exports = ReactDOM;
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+exports.SelectedSessionDisplay = function (props) {
+    var hoursADay = 8;
+    var days = 3;
+    var hourWidth = 100 / (hoursADay * days);
+    var colours = ["1f77b4", "ff7f0e", "2ca02c", "d62728", "9467bd", "8c564b", "e377c2", "7f7f7f", "bcbd22", "17becf"];
+    var style = {
+        "backgroundColor": "#" + colours[props.Index % 10],
+        "height": "20px",
+        "width": (hourWidth * props.Length) + "%",
+        "display": "inline-block"
+    };
+    return React.createElement("span", { style: style, title: props.Name });
+};
+
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -141,9 +166,18 @@ module.exports = ReactDOM;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ReactDOM = __webpack_require__(2);
-var SessionList_1 = __webpack_require__(1);
-ReactDOM.render(React.createElement(SessionList_1.SessionList, null), document.getElementById("root"));
+var SelectedSessionDisplay_1 = __webpack_require__(3);
+exports.SelectedSessionList = function (props) {
+    var rows = [];
+    var i = 0;
+    for (var _i = 0, _a = props.Sessions; _i < _a.length; _i++) {
+        var session = _a[_i];
+        rows.push(React.createElement(SelectedSessionDisplay_1.SelectedSessionDisplay, { Name: session.Name, Description: session.Description, Length: session.Length, key: session.Name, Index: i }));
+        i++;
+    }
+    var style = { minHeight: "25px" };
+    return React.createElement("div", { style: style }, rows);
+};
 
 
 /***/ }),
@@ -175,36 +209,9 @@ exports.SessionDisplay = function (props) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-exports.SelectedSessionDisplay = function (props) {
-    return React.createElement("li", null,
-        React.createElement("label", { htmlFor: props.Name, onClick: props.selectItem },
-            React.createElement("b", { "data-key": props.Name },
-                props.Name,
-                " - Duration ",
-                props.Length,
-                " hours")));
-};
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var _this = this;
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var SelectedSessionDisplay_1 = __webpack_require__(6);
-exports.SelectedSessionList = function (props) {
-    var rows = [];
-    for (var _i = 0, _a = props.Sessions; _i < _a.length; _i++) {
-        var session = _a[_i];
-        rows.push(React.createElement(SelectedSessionDisplay_1.SelectedSessionDisplay, { Name: session.Name, Description: session.Description, Length: session.Length, key: session.Name, selectItem: _this.selectItem }));
-    }
-    return React.createElement("div", null,
-        React.createElement("ul", null, rows));
-};
+var ReactDOM = __webpack_require__(2);
+var SessionList_1 = __webpack_require__(1);
+ReactDOM.render(React.createElement(SessionList_1.SessionList, null), document.getElementById("root"));
 
 
 /***/ })

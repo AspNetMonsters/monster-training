@@ -2,7 +2,8 @@
 import { Session, SessionListState } from "./SessionData";
 import { SessionDisplay } from "./SessionDisplay";
 import { SelectedSessionList } from "./SelectedSessionList";
-    
+
+declare var Tippy: any;
  
 var Sessions: Session[] = [
     { Name: "Entity Framework", Description: "If you've got data in a database and you need to get it out then Entity Framework Core is you best friend. In this session we'll cover the basics: building a data context, structuring entities and doing queries", Length: 2, Selected: false },
@@ -27,6 +28,10 @@ export class SessionList extends React.Component<undefined, SessionListState>
             <SelectedSessionList Sessions={this.state.SelectedSessions} />
             {rows}
         </div>
+    }
+
+    componentDidUpdate() {
+        new Tippy("span");
     }
 
     selectItem(name: any) {
