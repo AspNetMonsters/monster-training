@@ -1,8 +1,7 @@
 ﻿import * as React from "react";
-import { Session } from "./Session";
-
-interface Session { Name: string; Description: string; Length: number; Selected: boolean }
-interface SessionListState { Sessions: Session[] }
+import { Session, SessionListState } from "./SessionData";
+import { SessionDisplay } from "./SessionDisplay";
+import { SelectedSessionList } from "./SelectedSessionList";
     
  
 var Sessions: Session[] = [
@@ -15,26 +14,27 @@ export class SessionList extends React.Component<undefined, SessionListState>
     constructor()
     {
         super();
-        this.state = { Sessions: Sessions };
+        this.state = { Sessions: Sessions, SelectedSessions: [] };
         this.selectItem = this.selectItem.bind(this);
     }
 
     render() {
         var rows = [];
         for (var session of this.state.Sessions) {
-            rows.push(<Session Name={session.Name} Description={session.Description} Length={session.Length} key={session.Name} selectItem={this.selectItem} />);
+            rows.push(<SessionDisplay Name={session.Name} Description={session.Description} Length={session.Length} key={session.Name} selectItem={this.selectItem} />);
         }
         return <div>
+            <SelectedSessionList Sessions={this.state.SelectedSessions} />
             {rows}
         </div>
     }
 
     selectItem(name: any) {
-        debugger;
         var sessions = this.state.Sessions;
 
         var item = sessions.filter((x) => x.Name === name.target.attributes["data-key"].value)[0];
         item.Selected = name.target.checked;
-        this.setState({ Sessions: sessions });
+        var selectedSessions = sessions.filter((x) => x.Selected);
+        this.setState({ Sessions: sessions, SelectedSessions: selectedSessions });
     }
 }

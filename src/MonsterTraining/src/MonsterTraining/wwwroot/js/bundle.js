@@ -90,7 +90,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var Session_1 = __webpack_require__(3);
+var SessionDisplay_1 = __webpack_require__(5);
+var SelectedSessionList_1 = __webpack_require__(7);
 var Sessions = [
     { Name: "Entity Framework", Description: "If you've got data in a database and you need to get it out then Entity Framework Core is you best friend. In this session we'll cover the basics: building a data context, structuring entities and doing queries", Length: 2, Selected: false },
     { Name: "Introduction to .NET Core", Description: ".NET Core is a streamlined version of .NET which supports cross platform development and .NET Standard", Length: 1, Selected: false }
@@ -99,7 +100,7 @@ var SessionList = (function (_super) {
     __extends(SessionList, _super);
     function SessionList() {
         var _this = _super.call(this) || this;
-        _this.state = { Sessions: Sessions };
+        _this.state = { Sessions: Sessions, SelectedSessions: [] };
         _this.selectItem = _this.selectItem.bind(_this);
         return _this;
     }
@@ -107,16 +108,18 @@ var SessionList = (function (_super) {
         var rows = [];
         for (var _i = 0, _a = this.state.Sessions; _i < _a.length; _i++) {
             var session = _a[_i];
-            rows.push(React.createElement(Session_1.Session, { Name: session.Name, Description: session.Description, Length: session.Length, key: session.Name, selectItem: this.selectItem }));
+            rows.push(React.createElement(SessionDisplay_1.SessionDisplay, { Name: session.Name, Description: session.Description, Length: session.Length, key: session.Name, selectItem: this.selectItem }));
         }
-        return React.createElement("div", null, rows);
+        return React.createElement("div", null,
+            React.createElement(SelectedSessionList_1.SelectedSessionList, { Sessions: this.state.SelectedSessions }),
+            rows);
     };
     SessionList.prototype.selectItem = function (name) {
-        debugger;
         var sessions = this.state.Sessions;
         var item = sessions.filter(function (x) { return x.Name === name.target.attributes["data-key"].value; })[0];
         item.Selected = name.target.checked;
-        this.setState({ Sessions: sessions });
+        var selectedSessions = sessions.filter(function (x) { return x.Selected; });
+        this.setState({ Sessions: sessions, SelectedSessions: selectedSessions });
     };
     return SessionList;
 }(React.Component));
@@ -130,26 +133,7 @@ exports.SessionList = SessionList;
 module.exports = ReactDOM;
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-exports.Session = function (props) {
-    return React.createElement("div", null,
-        React.createElement("input", { type: "checkbox", onClick: props.selectItem, "data-key": props.Name }),
-        React.createElement("b", null,
-            props.Name,
-            " - Duration ",
-            props.Length,
-            " hours"),
-        React.createElement("p", null, props.Description));
-};
-
-
-/***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -160,6 +144,67 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(2);
 var SessionList_1 = __webpack_require__(1);
 ReactDOM.render(React.createElement(SessionList_1.SessionList, null), document.getElementById("root"));
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+exports.SessionDisplay = function (props) {
+    return React.createElement("div", null,
+        React.createElement("input", { type: "checkbox", onClick: props.selectItem, "data-key": props.Name }),
+        React.createElement("label", { htmlFor: props.Name, onClick: props.selectItem },
+            React.createElement("b", { "data-key": props.Name },
+                props.Name,
+                " - Duration ",
+                props.Length,
+                " hours")),
+        React.createElement("p", null, props.Description));
+};
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+exports.SelectedSessionDisplay = function (props) {
+    return React.createElement("li", null,
+        React.createElement("label", { htmlFor: props.Name, onClick: props.selectItem },
+            React.createElement("b", { "data-key": props.Name },
+                props.Name,
+                " - Duration ",
+                props.Length,
+                " hours")));
+};
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var _this = this;
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var SelectedSessionDisplay_1 = __webpack_require__(6);
+exports.SelectedSessionList = function (props) {
+    var rows = [];
+    for (var _i = 0, _a = props.Sessions; _i < _a.length; _i++) {
+        var session = _a[_i];
+        rows.push(React.createElement(SelectedSessionDisplay_1.SelectedSessionDisplay, { Name: session.Name, Description: session.Description, Length: session.Length, key: session.Name, selectItem: _this.selectItem }));
+    }
+    return React.createElement("div", null,
+        React.createElement("ul", null, rows));
+};
 
 
 /***/ })

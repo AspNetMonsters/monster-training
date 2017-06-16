@@ -305,3 +305,5 @@ src/MonsterTraining/src/MonsterTraining/Properties/PublishProfiles/
 src/MonsterTraining/src/MonsterTraining/wwwroot/js/site.min.js
 
 *.orig
+
+**/wwwroot/js/*
