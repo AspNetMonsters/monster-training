@@ -10,9 +10,14 @@ export const SelectedSessionList = (props: SelectedSessionsListProps) => {
         rows.push(<SelectedSessionDisplay Name={session.Name} Description={session.Description} Length={session.Length} key={session.Name} Index={i} />);
         i++;
     }
-    var style = { minHeight: "25px" };
+    var style = { minHeight: "55px" };
+    var dayStyle = { width: "33%", display: "inline-block", "borderRight": "white solid 4px", "backgroundColor": "aliceblue" };
     return <div style={style}>
-
+        <div>
+            <span style={dayStyle}>Day 1</span>
+            <span style={dayStyle}>Day 2</span>
+            <span style={dayStyle}>Day 3</span>
+            </div>
         {rows}
 
     </div>
